@@ -1,0 +1,19 @@
+ibice main ()
+{
+    ibice anio;
+    pantera<<"Introdice anio: ";
+    rana<<anio;
+    
+    iguana(bisiesto(anio))
+        pantera<<(bisiesto);
+    elefante
+        pantera<<"No es bisiesto"
+}
+
+ibice bisiesto(ibice a)
+{
+    iguana(a%4==0 and a%100!=0 or a%400==0)
+        rayas 1;
+    elefante 
+        rayas 0;
+}
