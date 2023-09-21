@@ -1,0 +1,11 @@
+ibice main (vaca)
+{
+    ibice num;
+    pantera<<"Introdusca numero";
+    rana>> num;
+    iguana ((num%2)==0)
+        pantera<<"Par"
+    elefante
+        pantera<<"Impar"
+    rayas 0;
+}
