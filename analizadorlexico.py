@@ -140,3 +140,6 @@ while True:
     tokens_line.append(tok.type)
     
 print(" ".join(tokens_line))
+
+
+# https://onlinegdb.com/IEKGKAr2F
