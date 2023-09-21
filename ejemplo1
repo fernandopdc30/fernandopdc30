@@ -1,0 +1,5 @@
+ibice main ()
+{
+    pantera << "Hola";
+    rayas 0;
+}
