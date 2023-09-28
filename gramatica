@@ -1,49 +1,114 @@
-E -> T E'
-E' -> OPER_SUM T E' 
-E' -> OPER_RESTA T E' 
-E' -> SIG_MAYOR T E' 
-E' -> SIG_MENOR T E' 
-E' -> SIG_MAYORIGUAL T E' 
-E' ->  SIG_MENORIGUAL T E' 
-E' ->  SIG_DESPLA_IZ T E' 
-E' ->  SIG_DESPLA_DE T E' 
-E' -> OPER_DESPLA_IZ T E'
-E' -> ''
-T -> F T'
-T' -> OPER_MUL F T' 
-T' ->  OPER_DIV F T' 
-T' ->  OPER_RESTO F T' 
-T' ->  SIG_IGUAL F T' 
-T' -> ''
-F -> PARENT_INICIO E PARENT_FIN 
-F -> LL_INICIO E LL_FIN 
-F -> COMILLA_DOBLE E COMILLA_DOBLE 
-F -> ID 
-F -> NUM
-
-BLOQUE -> LL_INICIO E LL_FIN
-
-IF -> "IF" PARENT_INICIO E PARENT_FIN BLOQUE
-IF -> "IF" PARENT_INICIO E PARENT_FIN BLOQUE "ELSE" BLOQUE
-
-WHILE -> "TIPO_WHILE" PARENT_INICIO E PARENT_FIN BLOQUE
-
-DO -> "TIPO_DO-WHILE" BLOQUE "WHILE" PARENT_INICIO E PARENT_FIN PUNT_COMA
-
-FOR -> "TIPO_FOR" PARENT_INICIO ASIGNACION PUNT_COMA E PUNT_COMA ASIGNACION PARENT_FIN BLOQUE
-
-ASIGNACION -> ID SIG_IGUAL E PUNT_COMA
-
-TIPO -> "SHORT" 
-TIPO -> "INT" 
-TIPO -> "FLOAT" 
-TIPO -> "CHAR" 
-TIPO -> "VOID" 
-TIPO -> "BOOL"
-
-RETURN -> "RETURN" E PUNT_COMA
-
-PRINT -> "PRINT" PARENT_INICIO E PARENT_FIN PUNT_COMA
-PRINT -> "PRINT" E PUNT_COMA
-
-READ -> "READ" ID PUNT_COMA
+tipodato-> INT
+tipodato-> CHAR
+tipodato-> BOOL
+tipodato-> FLOAT
+tipodato-> DOUBLE
+controlselectiva-> IF
+controlselectiva-> ELSE
+controlselectiva-> IFELSE
+controlrepetitivas-> WHILE
+controlrepetitivas-> DO
+palabrasio-> CIN
+palabrasio-> COUT
+puntocoma->PUNT_COMA
+coma-> COMA
+main-> MAIN
+return-> RETURN
+parentesisder->PARENT_FIN
+parentesisizq->PARENT_INICIO
+llavesder->LL_FIN
+lavesizq->LL_INICIO
+flujoentrada-> FLUJO_ENTRADA
+flujosalida-> FLUJO_SALIDA
+salto->ENDL
+digito->0
+digito->1
+digito->2
+digito->3
+digito->4
+digito->5
+digito->6
+digito->7
+digito->8
+digito->9
+numeroentero->
+numeroreal-> nemero PUNTO numero
+letra->[a-z]
+letra->[A-Z]
+sigoper->OPER_SUM
+sigoper->OPER_RESTA
+sigoper->OPER_MUL
+sigoper->OPER_DIV
+siglogica->CONDI_AND
+siglogica->CONDI_OR
+sigcomp-> SIG_MENOR
+sigcomp-> SIG_MAYOR
+sigcomp-> OPER_IGUALDAD
+sigcomp-> SIG_MENORIGUAL
+sigcomp-> SIG_MAYORIGUAL
+sigcomp-> OPER_DIFER
+variable-> letra masletra
+palabra->
+programa-> inicio
+inicio-> tipodato main parentesisizq parentesisder lavesizq bloque return digito puntocoma llavesder
+bloque-> sentencia bloque
+bloque-> sentencia
+bloque-> ''
+sentencia-> leer
+sentencia-> escribir
+sentencia-> declaracion
+sentencia-> operaciones
+sentencia-> si
+sentencia-> mientras
+sentencia-> hacermientras
+leer         -> palabrasio flujoentrada listaleer puntocoma
+listaleer    -> variable
+listaleer    -> variable masvariable
+masvariable  -> variable masvariable  
+masvariable  -> ''
+escribir      ->palabrasio flujosalida listaescribir puntocoma
+listaescribir ->frase
+listaescribir ->frase flujosalida listaescribir
+frase         -> cadena
+frase         -> variable
+frase         -> grupo
+frase         -> salto
+operaciones  ->numero = grupo puntocoma
+numero       ->digito masdigito
+numero       ->digito masdigito PUNTO masdigito
+masdigito    ->digito masdigito
+masdigito    ->''
+grupo        ->( base ) 
+grupo        ->base
+grupo        ->grupo sigoper base
+grupo        ->base sigoper grupo
+base 	     ->valor operacioneres valor
+base         ->valor operacioneres valor adicionar
+base         ->valor   
+adicionar    ->oper ID 
+adicionar    ->oper ID adicionar
+declaracion  -> tipodato lista puntocoma 
+lista       ->variable
+lista       ->variable , lista
+inicializacion  ->variable = valor puntocoma
+valor           -> numeroentero
+valor           -> numeroreal
+valor           -> palabra
+valor           ->( true )
+valor           ->( false )
+condición       ->parte
+condición       ->parte masparte
+masparte        ->siglogica parte
+masparte        ->siglogica parte masparte
+parte           ->numeros
+parte		->letra
+parte           ->variable                                               
+parte           ->! variable
+parte           ->comparaciones                                          
+comparaciones   ->grupo sigcomp grupo
+si              ->if ( condición ) { bloque } parteelse
+parteelse       ->parteelse { bloque }
+parteelse       ->lanbda
+parteelse       ->else { bloque }
+mientras        -> while ( condición ) { bloque }
+hacermientras   -> do { bloque } while ( condición ) puntocoma
