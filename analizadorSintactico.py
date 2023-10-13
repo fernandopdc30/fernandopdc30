@@ -7,12 +7,11 @@ from sys import stdin
 from analizadorSemantico import *
 
 precedence = (
-	('right','ID','CALL','BEGIN','IF','WHILE'),
-	('right','PROCEDURE'),
-	('right','VAR'),
-	('right', 'ASSIGN'),
-	('right','UPDATE'),
-	('left','NE'),
+	('right','ID','IF','ELSE','TIPO_WHILE'),
+	('right','TIPO_FOR'),
+	('right','RETURN'),
+	('right', 'READ','PRINT'),
+	('right','FLOAT','CHAR','VOID'),
 	('left','LT','LTE','GT','GTE'),
 	('left','PLUS','MINUS'),
 	('left','TIMES','DIVIDE'),
