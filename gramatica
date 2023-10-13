@@ -1,40 +1,37 @@
-tipodato-> INT
-tipodato-> CHAR
-tipodato-> BOOL
-tipodato-> FLOAT
-tipodato-> DOUBLE
-controlselectiva-> IF
-controlselectiva-> ELSE
-controlselectiva-> IFELSE
-controlrepetitivas-> WHILE
-controlrepetitivas-> DO
-palabrasio-> CIN
-palabrasio-> COUT
-puntocoma->PUNT_COMA
-coma-> COMA
+T-> INT
+T-> CHAR
+T-> BOOL
+T-> FLOAT
+T-> DOUBLE
+C-> IF
+C-> ELSE
+C-> IFELSE
+CR-> WHILE
+CR-> DO
+P-> CIN
+P-> COUT
+PC->PUNT_COMA
+CA-> COMA
 main-> MAIN
 return-> RETURN
-parentesisder->PARENT_FIN
-parentesisizq->PARENT_INICIO
-llavesder->LL_FIN
-lavesizq->LL_INICIO
-flujoentrada-> FLUJO_ENTRADA
-flujosalida-> FLUJO_SALIDA
+PD->PARENT_FIN
+PZ->PARENT_INICIO
+LD->LL_FIN
+LZ->LL_INICIO
+FE-> FLUJO_ENTRADA
+FS-> FLUJO_SALIDA
 salto->ENDL
-digito->0
-digito->1
-digito->2
-digito->3
-digito->4
-digito->5
-digito->6
-digito->7
-digito->8
-digito->9
-numeroentero->
-numeroreal-> nemero PUNTO numero
-letra->[a-z]
-letra->[A-Z]
+D->0
+D->1
+D->2
+D->3
+D->4
+D->5
+D->6
+D->7
+D->8
+D->9
+NUM-> NUM PUNTO NUM
 sigoper->OPER_SUM
 sigoper->OPER_RESTA
 sigoper->OPER_MUL
@@ -47,68 +44,66 @@ sigcomp-> OPER_IGUALDAD
 sigcomp-> SIG_MENORIGUAL
 sigcomp-> SIG_MAYORIGUAL
 sigcomp-> OPER_DIFER
-variable-> letra masletra
-palabra->
+variable-> CHAR OPER_SUMA CHAR
 programa-> inicio
-inicio-> tipodato main parentesisizq parentesisder lavesizq bloque return digito puntocoma llavesder
+inicio-> T main PZ PD LZ bloque return D PC LD
 bloque-> sentencia bloque
 bloque-> sentencia
 bloque-> ''
 sentencia-> leer
 sentencia-> escribir
 sentencia-> declaracion
-sentencia-> operaciones
+sentencia-> OP
 sentencia-> si
 sentencia-> mientras
 sentencia-> hacermientras
-leer         -> palabrasio flujoentrada listaleer puntocoma
+leer         -> P FE listaleer PC
 listaleer    -> variable
 listaleer    -> variable masvariable
 masvariable  -> variable masvariable  
 masvariable  -> ''
-escribir      ->palabrasio flujosalida listaescribir puntocoma
-listaescribir ->frase
-listaescribir ->frase flujosalida listaescribir
-frase         -> cadena
-frase         -> variable
-frase         -> grupo
-frase         -> salto
-operaciones  ->numero = grupo puntocoma
-numero       ->digito masdigito
-numero       ->digito masdigito PUNTO masdigito
-masdigito    ->digito masdigito
-masdigito    ->''
-grupo        ->( base ) 
-grupo        ->base
-grupo        ->grupo sigoper base
-grupo        ->base sigoper grupo
-base 	     ->valor operacioneres valor
-base         ->valor operacioneres valor adicionar
-base         ->valor   
-adicionar    ->oper ID 
-adicionar    ->oper ID adicionar
-declaracion  -> tipodato lista puntocoma 
-lista       ->variable
-lista       ->variable , lista
-inicializacion  ->variable = valor puntocoma
-valor           -> numeroentero
-valor           -> numeroreal
-valor           -> palabra
-valor           ->( true )
-valor           ->( false )
-condición       ->parte
-condición       ->parte masparte
-masparte        ->siglogica parte
-masparte        ->siglogica parte masparte
-parte           ->numeros
-parte		->letra
-parte           ->variable                                               
-parte           ->! variable
-parte           ->comparaciones                                          
-comparaciones   ->grupo sigcomp grupo
-si              ->if ( condición ) { bloque } parteelse
-parteelse       ->parteelse { bloque }
-parteelse       ->lanbda
-parteelse       ->else { bloque }
-mientras        -> while ( condición ) { bloque }
-hacermientras   -> do { bloque } while ( condición ) puntocoma
+escribir      ->P FS L PC
+L ->F
+L ->F FS L
+F -> cadena
+F -> variable
+F -> G
+F -> salto
+OP ->NUM = G PC
+NUM ->D MD
+NUM ->D MD PUNTO MD
+MD ->D MD
+MD ->''
+G ->( base ) 
+G ->base
+G ->G sigoper base
+G ->base sigoper G
+base ->valor operacioneres valor
+base ->valor operacioneres valor adicionar
+base ->valor   
+adicionar ->oper ID 
+adicionar ->oper ID adicionar
+declaracion -> T lista PC 
+lista ->variable
+lista ->variable , lista
+inicializacion  ->variable = valor PC
+valor -> NUM
+valor -> palabra
+valor ->( true )
+valor ->( false )
+condición ->parte
+condición ->parte masparte
+masparte ->siglogica parte
+masparte ->siglogica parte masparte
+parte ->NUM
+parte ->CHAR
+parte ->variable                                               
+parte ->! variable
+parte ->comparaciones                                          
+comparaciones ->G sigcomp G
+si ->IF ( condición ) { bloque } parteelse
+parteelse ->parteelse { bloque }
+parteelse ->''
+parteelse ->ELSE { bloque }
+mientras -> WHILE ( condición ) { bloque }
+hacermientras -> DO { bloque } while ( condición ) puntocoma
