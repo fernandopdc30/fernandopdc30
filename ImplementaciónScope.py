@@ -1,9 +1,6 @@
 import ast
-
-# Definición de una tabla de símbolos para almacenar información de funciones
 tabla_de_simbolos = []
 
-# Función para recorrer el árbol sintáctico en busca de funciones
 def encontrar_funciones(node, ambito):
     if isinstance(node, ast.FunctionDef):
         # Si el nodo es una definición de función, registramos la función en la tabla de símbolos
